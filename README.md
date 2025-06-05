@@ -17,31 +17,35 @@ Model Information
 - Format: Q4_K_M
 - Size: ~4 GB
 
-Project Architecture
---------------------
-speech-coach-mistral/
+## Project Structure
+
+```
+speech-coach-v3/
+├── app/
+│   ├── main.py                 ← main Streamlit interface
+│   ├── feedback.py             ← GPT logic to generate feedback
+│   ├── transcription.py        ← audio processing via Whisper
+│   ├── ong_context.py          ← load context from NGO files
+│   ├── utils.py                ← utilities: gauge, note parsing, etc.
+│   ├── interface_texts.py      ← multilingual UI and email text definitions
+│   ├── coach_notifier.py       ← coach email mapping & lookup
+│   └── email_sender.py         ← generic email sending logic
 │
-├── app/ # Application Streamlit
-│ ├── main.py # Entrée principale
-│ ├── pages/ # Pages supplémentaires
-│ └── components/ # Composants Streamlit
-│
-├── mistral/ # Serveur et gestion du modèle
-│ ├── model.gguf # Fichier du modèle quantisé
-│ ├── generation.py # Wrapper LLM local (llama_cpp)
-│ └── settings.yaml # Paramètres du modèle
-│
-├── prompts/ # Prompts par langue / ONG
-│ ├── base_fr.txt
-│ ├── base_de.txt
-│ └── base_it.txt
+├── prompts/
+│   ├── prompt_fr.txt           ← Based on a perfect pitch as defined with coachs for FCH.
+│   ├── prompt_de.txt           ← Based on a perfect pitch as defined with coachs for DCH.
+│   └── prompt_it.txt           ← Based on a perfect pitch as defined with coachs for ICH.
 │
 ├── data/
-│ └── quatre_pattes.json # Contenus multilingues, stats, messages
+│   ├── coachs.json             ← NGO-language → coach email mapping
+│   └── organisations/*.json    ← NGO information (slogan, redflags, model speech...)
 │
-├── email_utils.py # Notification des coachs par email
-├── README.md
-└── requirements.txt
+├── streamlit_app.py            ← entry point to launch the app
+├── requirements.txt
+└── README.md                   ← this file
+```
+
+---
 
 Key Features
 ------------
