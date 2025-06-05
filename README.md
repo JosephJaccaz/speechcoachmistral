@@ -21,25 +21,25 @@ Project Architecture
 --------------------
 speech-coach-mistral/
 │
-├── app/                  → Streamlit application frontend
-│   ├── main.py
-│   ├── pages/
-│   └── components/
+├── app/ # Application Streamlit
+│ ├── main.py # Entrée principale
+│ ├── pages/ # Pages supplémentaires
+│ └── components/ # Composants Streamlit
 │
-├── mistral/              → Local LLM server and interface
-│   ├── model.gguf
-│   ├── generation.py
-│   └── settings.yaml
+├── mistral/ # Serveur et gestion du modèle
+│ ├── model.gguf # Fichier du modèle quantisé
+│ ├── generation.py # Wrapper LLM local (llama_cpp)
+│ └── settings.yaml # Paramètres du modèle
 │
-├── prompts/              → Multilingual prompt templates
-│   ├── base_fr.txt
-│   ├── base_de.txt
-│   └── base_it.txt
+├── prompts/ # Prompts par langue / ONG
+│ ├── base_fr.txt
+│ ├── base_de.txt
+│ └── base_it.txt
 │
 ├── data/
-│   └── quatre_pattes.json  → NGO content, stats, messages
+│ └── quatre_pattes.json # Contenus multilingues, stats, messages
 │
-├── email_utils.py         → Coach notification system
+├── email_utils.py # Notification des coachs par email
 ├── README.md
 └── requirements.txt
 
